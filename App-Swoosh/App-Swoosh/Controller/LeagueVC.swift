@@ -10,10 +10,13 @@ import UIKit
 
 class LeagueVC: UIViewController {
 
+    var player: Player!
+    
+    @IBOutlet weak var nextBtn: BorderButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        player = Player()
     }
     
     @IBAction func nextBtnPressed(_ sender: Any) {
@@ -23,7 +26,23 @@ class LeagueVC: UIViewController {
     @IBAction func unwindFromLeagueVC(unwindSegue : UIStoryboardSegue) {
         
     }
-
+    
+    @IBAction func menBtnPressed(_ sender: Any) {
+        selectLeague(leagueType: "Men")
+    }
+    
+    @IBAction func womenBtnPressed(_ sender: Any) {
+        selectLeague(leagueType: "Women")
+    }
+    
+    @IBAction func coedBtnPressed(_ sender: Any) {
+        selectLeague(leagueType: "Co-ed")
+    }
+    
+    func selectLeague(leagueType: String) {
+        player.desiredLeague = leagueType
+        nextBtn.isEnabled = true
+    }
     /*
     // MARK: - Navigation
 
